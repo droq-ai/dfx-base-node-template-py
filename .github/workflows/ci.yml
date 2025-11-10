@@ -25,11 +25,15 @@ jobs:
       
       - name: Install dependencies
         run: |
+          # Create virtual environment
+          uv venv
+          source .venv/bin/activate
           # Install dependencies without editable package (workaround for hatchling issue)
           uv pip install nats-py aiohttp
-          uv pip install --dev pytest pytest-asyncio black ruff mypy
+          uv pip install pytest pytest-asyncio black ruff mypy
           # Set PYTHONPATH for imports
           echo "PYTHONPATH=src" >> $GITHUB_ENV
+          echo "VIRTUAL_ENV=$PWD/.venv" >> $GITHUB_ENV
       
       - name: Start NATS with JetStream
         run: |
@@ -54,16 +58,22 @@ jobs:
         run: docker rm -f nats-js || true
       
       - name: Run tests
-        run: PYTHONPATH=src pytest tests/ -v
+        run: |
+          source .venv/bin/activate
+          PYTHONPATH=src pytest tests/ -v
         env:
           NATS_URL: nats://localhost:4222
           STREAM_NAME: droq-stream
       
       - name: Check formatting
-        run: black --check src/ tests/
+        run: |
+          source .venv/bin/activate
+          black --check src/ tests/
       
       - name: Lint
-        run: ruff check src/ tests/
+        run: |
+          source .venv/bin/activate
+          ruff check src/ tests/
 
   docker:
     runs-on: ubuntu-latest
