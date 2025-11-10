@@ -1,0 +1,73 @@
+[project]
+name = "droq-node-template"
+version = "0.1.0"
+description = "A Python template for building Droq nodes"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Droq Team", email = "team@droq.ai"}
+]
+keywords = ["droq", "node", "template", "workflow"]
+
+# Minimal dependencies - add what you need for your node
+# Common options (uncomment and adjust versions as needed):
+# dependencies = [
+#     "pydantic>=2.0.0",     # For configuration validation
+#     "pyyaml>=6.0",         # For YAML parsing
+#     "PyNaCl>=1.5.0",       # For encryption
+#     "requests>=2.31.0",     # For HTTP requests (sync alternative)
+# ]
+
+dependencies = [
+    "nats-py>=2.3.0",      # For NATS messaging and JetStream
+    "aiohttp>=3.8.0",      # For HTTP/API calls
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+
+[project.scripts]
+node = "node.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatchling.build]
+include = ["src/node"]
+
+[tool.hatchling.build.targets.wheel]
+packages = ["src/node"]
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
