@@ -40,9 +40,6 @@ node = "node.main:main"
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.hatchling.build]
-include = ["src/node"]
-
 [tool.hatchling.build.targets.wheel]
 packages = ["src/node"]
 

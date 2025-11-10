@@ -24,7 +24,12 @@ jobs:
           python-version: "3.11"
       
       - name: Install dependencies
-        run: uv sync
+        run: |
+          # Install dependencies without editable package (workaround for hatchling issue)
+          uv pip install nats-py aiohttp
+          uv pip install --dev pytest pytest-asyncio black ruff mypy
+          # Set PYTHONPATH for imports
+          echo "PYTHONPATH=src" >> $GITHUB_ENV
       
       - name: Start NATS with JetStream
         run: |
@@ -49,16 +54,16 @@ jobs:
         run: docker rm -f nats-js || true
       
       - name: Run tests
-        run: uv run pytest tests/ -v
+        run: PYTHONPATH=src pytest tests/ -v
         env:
           NATS_URL: nats://localhost:4222
           STREAM_NAME: droq-stream
       
       - name: Check formatting
-        run: uv run black --check src/ tests/
+        run: black --check src/ tests/
       
       - name: Lint
-        run: uv run ruff check src/ tests/
+        run: ruff check src/ tests/
 
   docker:
     runs-on: ubuntu-latest
