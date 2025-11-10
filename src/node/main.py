@@ -11,7 +11,6 @@ import logging
 import os
 import signal
 import sys
-from typing import Optional
 
 # Optional: Use the logger helper
 try:
@@ -95,7 +94,7 @@ async def run_node():
 
         # Example 2: Use HTTP client
         if HTTPClient:
-            async with HTTPClient() as http:
+            async with HTTPClient():
                 # Example: Make GET request
                 # response = await http.get("/api/endpoint")
                 # logger.info(f"API response: {response}")
@@ -129,7 +128,7 @@ async def run_node():
             # Wait a bit before next iteration
             try:
                 await asyncio.wait_for(shutdown_event.wait(), timeout=1.0)
-            except asyncio.TimeoutError:
+            except TimeoutError:
                 continue
 
     except Exception as e:

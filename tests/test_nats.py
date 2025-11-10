@@ -1,8 +1,9 @@
 """Tests for NATS client."""
 
-import pytest
 import sys
 from pathlib import Path
+
+import pytest
 
 # Add src to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
@@ -70,11 +71,10 @@ async def test_nats_publish(nats_url):
 async def test_nats_subscribe(nats_url):
     """Test subscribing to NATS messages."""
     try:
-        from node.nats import NATSClient
         import asyncio
-
-        # Use a unique stream name for this test to avoid conflicts
         import time
+
+        from node.nats import NATSClient
 
         stream_name = f"test-subscribe-{int(time.time())}"
         client = NATSClient(nats_url=nats_url, stream_name=stream_name)
@@ -101,7 +101,7 @@ async def test_nats_subscribe(nats_url):
         # Wait for message to be received (with timeout)
         try:
             await asyncio.wait_for(message_received.wait(), timeout=2.0)
-        except asyncio.TimeoutError:
+        except TimeoutError:
             pass  # Continue to check received_messages
 
         # Cancel subscription

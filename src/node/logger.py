@@ -3,12 +3,11 @@
 import logging
 import os
 import sys
-from typing import Optional
 
 
 def setup_logging(
-    level: Optional[str] = None,
-    format_string: Optional[str] = None,
+    level: str | None = None,
+    format_string: str | None = None,
 ) -> None:
     """
     Setup logging configuration.

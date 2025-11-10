@@ -4,13 +4,13 @@ import asyncio
 import json
 import logging
 import os
-from typing import Any, Callable, Dict, Optional
+from collections.abc import Callable
+from typing import Any
 
 import nats
 from nats.aio.client import Client as NATS
 from nats.js import JetStreamContext
-from nats.js.api import StreamConfig, RetentionPolicy, StorageType
-
+from nats.js.api import RetentionPolicy, StorageType, StreamConfig
 
 logger = logging.getLogger(__name__)
 
@@ -20,8 +20,8 @@ class NATSClient:
 
     def __init__(
         self,
-        nats_url: Optional[str] = None,
-        stream_name: Optional[str] = None,
+        nats_url: str | None = None,
+        stream_name: str | None = None,
     ):
         """
         Initialize NATS client.
@@ -32,8 +32,8 @@ class NATSClient:
         """
         self.nats_url = nats_url or os.getenv("NATS_URL", "nats://localhost:4222")
         self.stream_name = stream_name or os.getenv("STREAM_NAME", "droq-stream")
-        self.nc: Optional[NATS] = None
-        self.js: Optional[JetStreamContext] = None
+        self.nc: NATS | None = None
+        self.js: JetStreamContext | None = None
 
     async def connect(self) -> None:
         """Connect to NATS server and initialize JetStream."""
@@ -72,8 +72,8 @@ class NATSClient:
     async def publish(
         self,
         subject: str,
-        data: Dict[str, Any],
-        headers: Optional[Dict[str, str]] = None,
+        data: dict[str, Any],
+        headers: dict[str, str] | None = None,
     ) -> None:
         """
         Publish a message to a NATS subject.
@@ -107,8 +107,8 @@ class NATSClient:
     async def subscribe(
         self,
         subject: str,
-        callback: Callable[[Dict[str, Any], Dict[str, str]], None],
-        queue: Optional[str] = None,
+        callback: Callable[[dict[str, Any], dict[str, str]], None],
+        queue: str | None = None,
     ) -> None:
         """
         Subscribe to a NATS subject and consume messages.
@@ -173,7 +173,7 @@ class NATSClient:
                         msgs = await sub.fetch(1, timeout=1.0)
                         for msg in msgs:
                             await message_handler(msg)
-                    except asyncio.TimeoutError:
+                    except TimeoutError:
                         continue
             else:
                 # Simple subscribe without queue - use push subscribe

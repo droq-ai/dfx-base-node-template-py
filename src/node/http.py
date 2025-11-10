@@ -1,13 +1,10 @@
 """HTTP client helper for making API requests."""
 
-import asyncio
-import json
 import logging
 import os
-from typing import Any, Dict, Optional
+from typing import Any
 
 import aiohttp
-
 
 logger = logging.getLogger(__name__)
 
@@ -17,9 +14,9 @@ class HTTPClient:
 
     def __init__(
         self,
-        base_url: Optional[str] = None,
+        base_url: str | None = None,
         timeout: int = 30,
-        headers: Optional[Dict[str, str]] = None,
+        headers: dict[str, str] | None = None,
     ):
         """
         Initialize HTTP client.
@@ -32,7 +29,7 @@ class HTTPClient:
         self.base_url = base_url or os.getenv("BASE_URL", "")
         self.timeout = aiohttp.ClientTimeout(total=timeout)
         self.default_headers = headers or {}
-        self.session: Optional[aiohttp.ClientSession] = None
+        self.session: aiohttp.ClientSession | None = None
 
     async def __aenter__(self):
         """Async context manager entry."""
@@ -68,9 +65,9 @@ class HTTPClient:
     async def get(
         self,
         endpoint: str,
-        params: Optional[Dict[str, Any]] = None,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Dict[str, Any]:
+        params: dict[str, Any] | None = None,
+        headers: dict[str, str] | None = None,
+    ) -> dict[str, Any]:
         """
         Make GET request.
 
@@ -99,10 +96,10 @@ class HTTPClient:
     async def post(
         self,
         endpoint: str,
-        data: Optional[Dict[str, Any]] = None,
-        json_data: Optional[Dict[str, Any]] = None,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Dict[str, Any]:
+        data: dict[str, Any] | None = None,
+        json_data: dict[str, Any] | None = None,
+        headers: dict[str, str] | None = None,
+    ) -> dict[str, Any]:
         """
         Make POST request.
 
@@ -139,10 +136,10 @@ class HTTPClient:
     async def put(
         self,
         endpoint: str,
-        data: Optional[Dict[str, Any]] = None,
-        json_data: Optional[Dict[str, Any]] = None,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Dict[str, Any]:
+        data: dict[str, Any] | None = None,
+        json_data: dict[str, Any] | None = None,
+        headers: dict[str, str] | None = None,
+    ) -> dict[str, Any]:
         """
         Make PUT request.
 
@@ -179,8 +176,8 @@ class HTTPClient:
     async def delete(
         self,
         endpoint: str,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Dict[str, Any]:
+        headers: dict[str, str] | None = None,
+    ) -> dict[str, Any]:
         """
         Make DELETE request.
 
