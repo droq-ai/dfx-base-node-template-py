@@ -76,10 +76,6 @@ Or set in `compose.yml` or pass to Docker:
 2. Build Docker image
 3. Register metadata in `droq-node-registry` (separate repo)
 
-## CI
-
-Tests, linting, and Docker build run automatically on push/PR via GitHub Actions.
-
 ## License
 
 Apache License 2.0

@@ -134,6 +134,7 @@ class NATSClient:
                 except Exception:
                     # Create consumer for queue group
                     from nats.js.api import ConsumerConfig
+
                     await self.js.add_consumer(
                         self.stream_name,
                         ConsumerConfig(
@@ -190,4 +191,3 @@ class NATSClient:
         if self.nc:
             await self.nc.close()
             logger.info("NATS connection closed")
-

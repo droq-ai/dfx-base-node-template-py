@@ -19,10 +19,11 @@ def nats_server():
     """
     compose_file = Path(__file__).parent.parent / "compose.yml"
     nats_url = os.getenv("NATS_URL", "nats://localhost:4222")
-    
+
     # Check if NATS is already running
     try:
         import socket
+
         host, port = nats_url.replace("nats://", "").split(":")
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(1)
@@ -34,7 +35,7 @@ def nats_server():
             return
     except Exception:
         pass
-    
+
     # Start NATS using docker-compose
     try:
         # Start only the NATS service
@@ -43,12 +44,13 @@ def nats_server():
             check=True,
             capture_output=True,
         )
-        
+
         # Wait for NATS to be ready
         max_attempts = 30
         for i in range(max_attempts):
             try:
                 import socket
+
                 host, port = nats_url.replace("nats://", "").split(":")
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 sock.settimeout(1)
@@ -61,9 +63,9 @@ def nats_server():
             time.sleep(0.5)
         else:
             pytest.fail("NATS server did not start in time")
-        
+
         yield nats_url
-        
+
     finally:
         # Stop NATS after tests
         subprocess.run(
@@ -76,4 +78,3 @@ def nats_server():
 def nats_url(nats_server):
     """Fixture that provides NATS URL."""
     return nats_server
-

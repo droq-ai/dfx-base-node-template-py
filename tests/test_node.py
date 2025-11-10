@@ -13,6 +13,7 @@ from node.main import main, run_node, shutdown_event
 def test_imports():
     """Test that the module can be imported."""
     from node import main
+
     assert main is not None
 
 
@@ -20,15 +21,15 @@ def test_imports():
 async def test_run_node(nats_url):
     """Test that run_node can be called (basic smoke test)."""
     import os
-    
+
     # Set NATS URL for the test
     os.environ["NATS_URL"] = nats_url
-    
+
     # Clear shutdown event first
     shutdown_event.clear()
     # Set shutdown event to exit quickly
     shutdown_event.set()
-    
+
     # Should not raise an exception
     await run_node()
 
@@ -38,10 +39,9 @@ def test_shutdown_event():
     # Reset to known state
     shutdown_event.clear()
     assert shutdown_event.is_set() is False
-    
+
     shutdown_event.set()
     assert shutdown_event.is_set() is True
-    
+
     shutdown_event.clear()
     assert shutdown_event.is_set() is False
-

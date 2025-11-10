@@ -6,4 +6,3 @@ __version__ = "0.1.0"
 from .main import main, run_node, shutdown_event
 
 __all__ = ["main", "run_node", "shutdown_event"]
-
