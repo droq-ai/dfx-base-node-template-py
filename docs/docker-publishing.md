@@ -1,8 +1,15 @@
 # Docker Publishing
 
-Automated Docker publishing via GitHub Actions.
+Automated Docker publishing via GitHub Actions with template detection.
 
-## Setup
+## Template Protection
+
+**Template Repository**: Docker publishing is **disabled** to prevent accidental publishing
+**Consuming Repositories**: Docker publishing is **enabled** automatically after customization
+
+The workflow detects template repositories and prevents publishing from the template itself.
+
+## Setup for Consuming Repositories
 
 **Triggers:**
 - Push to main branch → `latest` tag

@@ -68,14 +68,18 @@ uv add package-name
 
 ## Docker Publishing
 
-The template includes GitHub Actions for automatic Docker publishing:
+The template includes GitHub Actions for automatic Docker publishing that is **disabled for the template repository** and **enabled for consuming repositories**.
 
+**Template Repository**: Docker publishing is automatically disabled
+**Consuming Repositories**: Publishing is enabled after customization
+
+**Features:**
 - **Triggers**: Push to main, git tags, manual dispatch
 - **Registries**: GitHub Container Registry (default) + private registries
 - **Platforms**: linux/amd64, linux/arm64
-- **Features**: Security scanning, SBOM generation
+- **Security**: Security scanning, SBOM generation
 
-Configure private registry with secrets:
+**Private Registry Setup:**
 - `PRIVATE_REGISTRY_URL`
 - `PRIVATE_REGISTRY_USERNAME`
 - `PRIVATE_REGISTRY_PASSWORD`
