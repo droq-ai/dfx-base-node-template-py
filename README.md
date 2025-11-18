@@ -1,33 +1,56 @@
 # Droq Node Template
 
-A Python template for building Droq nodes. Works with any Python code - minimal updates needed.
+Python template for building Droq nodes with Docker publishing.
 
 ## Quick Start
 
 ```bash
-# 1. Clone and setup
 git clone <repository-url>
 cd droq-node-template-py
 uv sync
 
-# 2. Replace src/node/main.py with your code
+# Replace src/node/main.py with your code
+# Add dependencies: uv add your-package
 
-# 3. Add dependencies
-uv add your-package
-
-# 4. Test locally
+# Test locally
 PYTHONPATH=src uv run python -m node.main
-# or
-docker compose up
 
-# 5. Build
-docker build -t your-node:latest .
+# Run with Docker
+docker compose up
 ```
 
-## Documentation
+## Environment Variables
 
-- [Usage Guide](docs/usage.md) - How to use the template
-- [NATS Examples](docs/nats.md) - NATS publishing and consuming examples
+Copy `.env.example` to `.env` and configure:
+
+**Required:**
+- `NODE_NAME` - Node identifier
+- `NODE_PORT` - Port inside container (default: 8000)
+- `NATS_URL` - NATS server URL (default: nats://localhost:4222)
+- `STREAM_NAME` - JetStream name (default: droq-stream)
+- `LOG_LEVEL` - Logging level (default: INFO)
+
+**Variable Naming Convention:**
+- `NODE_` - Node configuration
+- `NATS_` - NATS configuration
+- `LOG_` - Logging configuration
+- `DB_` - Database configuration
+- `HTTP_` - HTTP client configuration
+- `SERVICE_` - Service-specific configuration
+- `METRICS_` - Metrics and monitoring
+
+## Docker
+
+```bash
+# Build
+docker build -t your-node:latest .
+
+# Run
+docker run -p 8080:8000 \
+  -e NODE_NAME=my-node \
+  -e NATS_URL=nats://localhost:4222 \
+  your-node:latest
+```
 
 ## Development
 
@@ -43,38 +66,25 @@ uv run ruff check src/ tests/
 uv add package-name
 ```
 
-## Docker
+## Docker Publishing
 
-```bash
-# Build
-docker build -t your-node:latest .
+The template includes GitHub Actions for automatic Docker publishing:
 
-# Run
-docker run --rm your-node:latest
+- **Triggers**: Push to main, git tags, manual dispatch
+- **Registries**: GitHub Container Registry (default) + private registries
+- **Platforms**: linux/amd64, linux/arm64
+- **Features**: Security scanning, SBOM generation
 
-# Development (with hot reload)
-docker compose up
-```
+Configure private registry with secrets:
+- `PRIVATE_REGISTRY_URL`
+- `PRIVATE_REGISTRY_USERNAME`
+- `PRIVATE_REGISTRY_PASSWORD`
 
-## Environment Variables
+## Documentation
 
-Copy `.env.example` to `.env` and update with your values:
-
-```bash
-cp .env.example .env
-```
-
-Or set in `compose.yml` or pass to Docker:
-- `NATS_URL` - NATS server URL (default: `nats://localhost:4222`)
-- `STREAM_NAME` - JetStream name (default: `droq-stream`)
-- `NODE_NAME` - Node identifier
-- `LOG_LEVEL` - Logging level
-
-## Next Steps
-
-1. Test locally
-2. Build Docker image
-3. Register metadata in `droq-node-registry` (separate repo)
+- [Usage Guide](docs/usage.md)
+- [Docker Publishing](docs/docker-publishing.md)
+- [NATS Examples](docs/nats.md)
 
 ## License
 

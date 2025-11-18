@@ -3,36 +3,31 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - NODE_HEALTH_CHECK_ENABLED=true
     container_name: droq-node-template
     environment:
       - NODE_NAME=droq-node-template
+      - NODE_PORT=8000
+      - NODE_HEALTH_CHECK_ENABLED=true
       - LOG_LEVEL=INFO
       - NATS_URL=nats://nats:4222
+      - NATS_CLIENT_NAME=${NODE_NAME:-droq-node-template}
       - STREAM_NAME=droq-stream
-      # Add your environment variables here
-      # - API_KEY=${API_KEY}
-      # - DATABASE_URL=${DATABASE_URL}
-      # - BASE_URL=https://api.example.com
     volumes:
-      # Mount source code for development (hot reload)
       - ./src:/app/src:ro
-      # Mount additional volumes as needed
-      # - ./data:/app/data
     networks:
       - droq-network
     restart: unless-stopped
-    # Uncomment to expose ports if your node needs them
-    # ports:
-    #   - "8080:8080"
+    ports:
+      - "${NODE_EXTERNAL_PORT:-8000}:${NODE_PORT:-8000}"
 
-  # NATS server for local development and testing
   nats:
     image: nats:latest
     container_name: droq-nats
     ports:
-      - "4222:4222"  # Client connections
-      - "8222:8222"  # HTTP monitoring
-      - "6222:6222"  # Cluster routing
+      - "4222:4222"
+      - "8222:8222"
     command: ["-js", "-m", "8222"]
     networks:
       - droq-network
