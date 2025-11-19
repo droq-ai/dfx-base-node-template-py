@@ -1,6 +1,6 @@
 # Droq Node Template
 
-Python template for building Droq nodes with Docker publishing.
+A Python template for building Droqflow nodes.
 
 ## Quick Start
 
