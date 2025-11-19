@@ -28,7 +28,6 @@ docker compose up
 2. Configure [node.json](docs/node-configuration.md) with your node metadata
 3. Register your node in [droq-node-registry](https://github.com/droq-ai/droq-node-registry) to appear on [directory.droq.ai](https://directory.droq.ai)
 
-## Configuration
 
 ### Node Configuration
 
