@@ -5,7 +5,7 @@ A Python template for building Droqflow nodes.
 ## Quick Start
 
 ```bash
-git clone <repository-url>
+git clone  git@github.com:droq-ai/dfx-base-node-template-py.git 
 cd droq-node-template-py
 uv sync
 
@@ -80,7 +80,6 @@ uv add package-name
 ## Documentation
 
 - [Node Configuration Guide](docs/node-configuration.md) - Complete node.json setup
-- [Docker Publishing](docs/docker-publishing.md) - Automated Docker publishing
 - [Usage Guide](docs/usage.md)
 - [NATS Examples](docs/nats.md)
 

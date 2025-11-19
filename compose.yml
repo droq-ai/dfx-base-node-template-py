@@ -3,13 +3,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        - NODE_HEALTH_CHECK_ENABLED=true
     container_name: droq-node-template
     environment:
       - NODE_NAME=droq-node-template
       - NODE_PORT=8000
-      - NODE_HEALTH_CHECK_ENABLED=true
       - LOG_LEVEL=INFO
       - NATS_URL=nats://nats:4222
       - NATS_CLIENT_NAME=${NODE_NAME:-droq-node-template}

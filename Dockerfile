@@ -21,7 +21,6 @@ ENV NODE_PORT=8000
 
 EXPOSE ${NODE_PORT}
 
-ARG NODE_HEALTH_CHECK_ENABLED=false
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD python -c "import sys; sys.exit(0)" || exit 1
 
