@@ -231,31 +231,6 @@ Set your configuration values directly in `node.json`:
 }
 ```
 
-### Example 3: Base Template Customization
-
-```json
-{
-  "version": "1.0.0",
-  "node_id": "my-custom-node",
-  "name": "My Custom Service Node",
-  "description": "Custom service built from Droq base template",
-  "author": "My Name",
-  "api_url": "http://localhost:8000",
-  "created_at": "2025-01-20T14:00:00Z",
-  "ip_address": "127.0.0.1",
-  "status": "active",
-  "docker_image": "my-custom-node:latest",
-  "deployment_location": "local",
-  "source_code_location": "https://github.com/myusername/my-custom-node",
-  "components": {
-    "MainService": {
-      "path": "dfx.my-custom-node.core.main",
-      "description": "Main service functionality",
-      "author": "My Name"
-    }
-  }
-}
-```
 
 ## Integration with Docker and Environment Variables
 
