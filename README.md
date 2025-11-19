@@ -63,9 +63,8 @@ uv add package-name
 
 ## Documentation
 
-- [Node Configuration Guide](docs/node-configuration.md) - Complete node.json setup
-- [Node Registration Guide](docs/node-registration.md) - Register your node in the registry
 - [Usage Guide](docs/usage.md)
+- [Configuration Guide](docs/node-configuration.md) - Complete node.json setup
 - [NATS Examples](docs/nats.md)
 
 ## License
