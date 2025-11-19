@@ -64,7 +64,7 @@ uv add package-name
 ## Documentation
 
 - [Usage Guide](docs/usage.md)
-- [Configuration Guide](docs/node-configuration.md) - Complete node.json setup
+- [Configuration Guide](docs/node-configuration.md)
 - [NATS Examples](docs/nats.md)
 
 ## License
