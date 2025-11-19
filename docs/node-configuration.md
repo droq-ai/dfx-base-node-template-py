@@ -69,7 +69,7 @@ This guide explains how to configure `node.json` for your Droq nodes. All fields
 **Format**: `{registry}/{image}:{tag}`
 **Examples**:
 ```json
-"docker_image": "ghcr.io/myorg/my-node:latest"
+"docker_image": "myorg/my-node:latest"
 "docker_image": "my-node:1.2.3"
 ```
 
@@ -244,7 +244,7 @@ NODE_PORT=8080
 The `docker_image` field should match your Docker publishing configuration:
 
 ```json
-"docker_image": "ghcr.io/myorg/my-node:latest"
+"docker_image": "myorg/my-node:latest"
 ```
 
 Corresponds to:
