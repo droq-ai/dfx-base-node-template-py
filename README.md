@@ -30,14 +30,7 @@ Copy `.env.example` to `.env` and configure:
 - `STREAM_NAME` - JetStream name (default: droq-stream)
 - `LOG_LEVEL` - Logging level (default: INFO)
 
-**Variable Naming Convention:**
-- `NODE_` - Node configuration
-- `NATS_` - NATS configuration
-- `LOG_` - Logging configuration
-- `DB_` - Database configuration
-- `HTTP_` - HTTP client configuration
-- `SERVICE_` - Service-specific configuration
-- `METRICS_` - Metrics and monitoring
+
 
 ## Docker
 
@@ -66,28 +59,11 @@ uv run ruff check src/ tests/
 uv add package-name
 ```
 
-## Docker Publishing
 
-The template includes GitHub Actions for automatic Docker publishing that is **disabled for the template repository** and **enabled for consuming repositories**.
-
-**Template Repository**: Docker publishing is automatically disabled
-**Consuming Repositories**: Publishing is enabled after customization
-
-**Features:**
-- **Triggers**: Push to main, git tags, manual dispatch
-- **Registries**: GitHub Container Registry (default) + private registries
-- **Platforms**: linux/amd64, linux/arm64
-- **Security**: Security scanning, SBOM generation
-
-**Private Registry Setup:**
-- `PRIVATE_REGISTRY_URL`
-- `PRIVATE_REGISTRY_USERNAME`
-- `PRIVATE_REGISTRY_PASSWORD`
 
 ## Documentation
 
 - [Usage Guide](docs/usage.md)
-- [Docker Publishing](docs/docker-publishing.md)
 - [NATS Examples](docs/nats.md)
 
 ## License
