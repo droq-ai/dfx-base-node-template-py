@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "node_id": "dfx-base-node-template-py",
+  "name": "Droq Base Node Template",
+  "description": "A Python boilerplate template for creating new DFX nodes.",
+  "author": "Droq Team",
+  "api_url": "http://localhost:8003",
+  "created_at": "2025-11-17T18:44:00Z",
+  "ip_address": "127.0.0.1",
+  "status": "active",
+  "docker_image": "droqai/dfx-base-node-template:latest",
+  "deployment_location": "local",
+  "source_code_location": "https://github.com/droq-ai/dfx-base-node-template-py",
+  "components": {
+    "DFXExampleComponent": {
+      "path": "dfx.components.example",
+      "description": "This is a sample droq component",
+      "author": "Droq Team"
+    }
+  }
+}
