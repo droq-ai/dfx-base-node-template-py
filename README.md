@@ -26,7 +26,7 @@ docker compose up
 
 1. Complete your node development
 2. Configure [node.json](docs/node-configuration.md) with your node metadata
-3. Register your node in [droq-node-registry](https://github.com/droq-ai/droq-node-registry) to appear on [directory.droq.ai](https://directory.droq.ai)
+3. Register your node [TBD]
 
 
 
@@ -39,7 +39,7 @@ docker compose up
 docker build -t your-node:latest .
 
 # Run
-docker run -p 8080:8000 \
+docker run -p 8000:8000 \
   -e NODE_NAME=my-node \
   -e NATS_URL=nats://localhost:4222 \
   your-node:latest
