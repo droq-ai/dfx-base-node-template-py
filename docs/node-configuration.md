@@ -200,36 +200,6 @@ Set your configuration values directly in `node.json`:
 }
 ```
 
-### Example 2: Multi-Component Node
-
-```json
-{
-  "version": "1.0.0",
-  "node_id": "data-service",
-  "name": "Data Service Node",
-  "description": "Provides data processing and validation services",
-  "author": "My Team",
-  "api_url": "http://localhost:8000",
-  "created_at": "2025-01-15T10:30:00Z",
-  "ip_address": "127.0.0.1",
-  "status": "active",
-  "docker_image": "ghcr.io/myorg/data-service:latest",
-  "deployment_location": "local",
-  "source_code_location": "https://github.com/myorg/data-service",
-  "components": {
-    "Processor": {
-      "path": "dfx.data.service.processing.transform",
-      "description": "Transforms incoming data",
-      "author": "My Team"
-    },
-    "Validator": {
-      "path": "dfx.data.service.utils.validate",
-      "description": "Validates data format",
-      "author": "My Team"
-    }
-  }
-}
-```
 
 
 ## Integration with Docker and Environment Variables
