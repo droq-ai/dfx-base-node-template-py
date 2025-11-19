@@ -5,7 +5,7 @@ A Python template for building Droqflow nodes.
 ## Quick Start
 
 ```bash
-git clone  git@github.com:droq-ai/dfx-base-node-template-py.git 
+git clone git@github.com:droq-ai/dfx-base-node-template-py.git
 cd droq-node-template-py
 uv sync
 
@@ -21,6 +21,13 @@ PYTHONPATH=src uv run python -m node.main
 # Run with Docker
 docker compose up
 ```
+
+## Next Steps
+
+1. Complete your node development
+2. Configure [node.json](docs/node-configuration.md) with your node metadata
+3. Build and publish Docker image using [Docker Publishing](docs/docker-publishing.md)
+4. Register your node in [droq-node-registry](https://github.com/droq-ai/droq-node-registry) to appear on [directory.droq.ai](https://directory.droq.ai)
 
 ## Configuration
 
@@ -80,6 +87,8 @@ uv add package-name
 ## Documentation
 
 - [Node Configuration Guide](docs/node-configuration.md) - Complete node.json setup
+- [Node Registration Guide](docs/node-registration.md) - Register your node in the registry
+- [Docker Publishing](docs/docker-publishing.md) - Automated Docker publishing
 - [Usage Guide](docs/usage.md)
 - [NATS Examples](docs/nats.md)
 
