@@ -145,7 +145,7 @@ Components define the functional capabilities of your node. Each component has a
     "author": "Droq Team"
   },
   "DataProcessor": {
-    "path": "dfx.base-node-template-py.processing.transform",
+    "path": "myapp.src.processing.transform",
     "description": "Transforms incoming data",
     "author": "Droq Team"
   }
