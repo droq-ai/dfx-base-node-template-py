@@ -39,7 +39,7 @@ docker compose up
 docker build -t your-node:latest .
 
 # Run
-docker run -p 8080:8000 \
+docker run -p 8000:8000 \
   -e NODE_NAME=my-node \
   -e NATS_URL=nats://localhost:4222 \
   your-node:latest
