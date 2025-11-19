@@ -12,6 +12,9 @@ uv sync
 # Replace src/node/main.py with your code
 # Add dependencies: uv add your-package
 
+# Configure node.json with your node information
+# Configure environment variables
+
 # Test locally
 PYTHONPATH=src uv run python -m node.main
 
@@ -19,7 +22,20 @@ PYTHONPATH=src uv run python -m node.main
 docker compose up
 ```
 
-## Environment Variables
+## Configuration
+
+### Node Configuration
+
+Configure `node.json` with your node metadata. All fields are required:
+
+- **Identity**: `version`, `node_id`, `name`, `description`
+- **Runtime**: `api_url`, `ip_address`, `docker_image`, `status`, `deployment_location`
+- **Metadata**: `author`, `created_at`, `source_code_location`
+- **Components**: Define your node's functional components
+
+See [Node Configuration Guide](docs/node-configuration.md) for complete details.
+
+### Environment Variables
 
 Copy `.env.example` to `.env` and configure:
 
@@ -63,6 +79,8 @@ uv add package-name
 
 ## Documentation
 
+- [Node Configuration Guide](docs/node-configuration.md) - Complete node.json setup
+- [Docker Publishing](docs/docker-publishing.md) - Automated Docker publishing
 - [Usage Guide](docs/usage.md)
 - [NATS Examples](docs/nats.md)
 
