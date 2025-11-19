@@ -29,21 +29,6 @@ docker compose up
 3. Register your node in [droq-node-registry](https://github.com/droq-ai/droq-node-registry) to appear on [directory.droq.ai](https://directory.droq.ai)
 
 
-### Node Configuration
-
-Configure `node.json` with your node metadata. All fields are required:
-
-- **Identity**: `version`, `node_id`, `name`, `description`
-- **Runtime**: `api_url`, `ip_address`, `docker_image`, `status`, `deployment_location`
-- **Metadata**: `author`, `created_at`, `source_code_location`
-- **Components**: Define your node's functional components
-
-See [Node Configuration Guide](docs/node-configuration.md) for complete details.
-
-### Environment Variables
-
-Copy `.env.example` to `.env` and configure:
-
 **Required:**
 - `NODE_NAME` - Node identifier
 - `NODE_PORT` - Port inside container (default: 8000)
