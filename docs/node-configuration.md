@@ -140,7 +140,7 @@ Components define the functional capabilities of your node. Each component has a
 ```json
 "components": {
   "MainComponent": {
-    "path": "dfx.base-node-template-py.core.main",
+    "path": "myapp.src.core.main",
     "description": "Main entry point for the node",
     "author": "Droq Team"
   },
