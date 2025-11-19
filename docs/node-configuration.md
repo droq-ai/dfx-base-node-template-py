@@ -187,7 +187,7 @@ Set your configuration values directly in `node.json`:
   "created_at": "2025-01-15T10:30:00Z",
   "ip_address": "127.0.0.1",
   "status": "active",
-  "docker_image": "ghcr.io/myorg/math-calculator:1.0.0",
+  "docker_image": "myorg/math-calculator:1.0.0",
   "deployment_location": "local",
   "source_code_location": "https://github.com/myorg/math-calculator",
   "components": {
@@ -213,7 +213,7 @@ Set your configuration values directly in `node.json`:
   "created_at": "2025-01-15T10:30:00Z",
   "ip_address": "127.0.0.1",
   "status": "active",
-  "docker_image": "ghcr.io/myorg/data-service:latest",
+  "docker_image": "myorg/data-service:latest",
   "deployment_location": "local",
   "source_code_location": "https://github.com/myorg/data-service",
   "components": {
