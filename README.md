@@ -29,12 +29,6 @@ docker compose up
 3. Register your node in [droq-node-registry](https://github.com/droq-ai/droq-node-registry) to appear on [directory.droq.ai](https://directory.droq.ai)
 
 
-**Required:**
-- `NODE_NAME` - Node identifier
-- `NODE_PORT` - Port inside container (default: 8000)
-- `NATS_URL` - NATS server URL (default: nats://localhost:4222)
-- `STREAM_NAME` - JetStream name (default: droq-stream)
-- `LOG_LEVEL` - Logging level (default: INFO)
 
 
 
