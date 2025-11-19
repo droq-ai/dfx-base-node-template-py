@@ -6,7 +6,7 @@ A Python template for building Droqflow nodes.
 
 ```bash
 git clone git@github.com:droq-ai/dfx-base-node-template-py.git
-cd droq-node-template-py
+cd dfx-base-node-template-py
 uv sync
 
 # Replace src/node/main.py with your code
