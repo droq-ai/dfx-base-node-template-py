@@ -131,11 +131,10 @@ Components define the functional capabilities of your node. Each component has a
 - `service`: Service-specific components
 
 ### Component Structure
-
 ```json
 "components": {
   "ComponentName": {
-    "path": "dfx.{node_id}.{category}.{component_name}",
+    "path": "dfx.base-node-template-py.core.main",
     "description": "What this component does",
     "author": "Component author (optional)"
   }
