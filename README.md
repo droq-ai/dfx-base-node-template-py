@@ -87,7 +87,6 @@ uv add package-name
 
 - [Node Configuration Guide](docs/node-configuration.md) - Complete node.json setup
 - [Node Registration Guide](docs/node-registration.md) - Register your node in the registry
-- [Docker Publishing](docs/docker-publishing.md) - Automated Docker publishing
 - [Usage Guide](docs/usage.md)
 - [NATS Examples](docs/nats.md)
 
