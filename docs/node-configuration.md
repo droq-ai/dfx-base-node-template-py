@@ -121,14 +121,7 @@ Components define the functional capabilities of your node. Each component has a
 
 ### Component Path Structure
 
-**Format**: `dfx.{node_id}.{category}.{component_name}`
 
-**Categories**:
-- `core`: Main functionality components
-- `processing`: Data processing components
-- `api`: API-related components
-- `utils`: Utility and helper components
-- `service`: Service-specific components
 
 ### Component Structure
 ```json
